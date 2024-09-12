@@ -9,9 +9,11 @@ import {
    View,
    Platform,
    TextInput } from 'react-native';
-import { sizes } from './src/utils/sizes.js';
-import { colors } from './src/utils/colors.js';
+import { sizes } from './src/infrastructure/theme/sizes.js';
+import { colors } from './src/infrastructure/theme/colors.js';
 import { RestaurantsScreen } from './src/features/restaurants/components/screens/restaurants.screens.js';
+import styled from 'styled-components';
+
 
 export default function App() {
 
@@ -26,14 +28,3 @@ export default function App() {
 
   );
 }
-
-const styles = StyleSheet.create({
-
-  // container: {
-  //   flex: 1,
-  //   //ios status bar 
-  //   paddingTop: StatusBar.currentHeight,
-  //   backgroundColor: colors.lavender
-  // },
-
-});

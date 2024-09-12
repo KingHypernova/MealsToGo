@@ -9,58 +9,39 @@ import {
   Platform,
   TextInput } from 'react-native';
 
-import { RestaurantInfo } from '../restaurant-info.js';
-import { sizes } from '../../../../../src/utils/sizes.js';
-import { colors } from '../../../../../src/utils/colors.js';
+import { RestaurantCard } from '../restaurant-card.js';
+import { sizes } from '../../../../infrastructure/theme/sizes.js';
+import { colors } from '../../../../infrastructure/theme/colors.js';
+import styled from 'styled-components';
+
+const SafeArea = styled(SafeAreaView)`
+  flex: 1;
+  margin-top: ${StatusBar.currentHeight}px;
+  background-color: ${()=>colors.lavender};
+`;
+const SearchContainer = styled(View)`
+  flex: 0.1;
+  justify-content: 'center';
+  padding-horizontal:${()=>sizes.md}px;
+`;
+const RestaurantListContainer = styled(View)`
+  flex: 0.9;
+  padding: ${()=>sizes.md}px;
+`;
 
 
 export const RestaurantsScreen = () => (
 
-  <SafeAreaView style={styles.container}>
+  <SafeArea>
 
-    <View style={styles.searchBarContainer}>
-      <Searchbar
-          style={styles.searchBar}
-          placeholder="What would you like to eat?"
-      />
-    </View>
+    <SearchContainer>
+      <Searchbar placeholder="What would you like to eat?"/>
+    </SearchContainer>
 
-    <View style={styles.list}>
-      <RestaurantInfo/>
-    </View>
+    <RestaurantListContainer>
+      <RestaurantCard/>
+    </RestaurantListContainer>
 
-  </SafeAreaView>
+  </SafeArea>
 
 );
-
-const styles = StyleSheet.create({
-
-  container: {
-    flex: 1,
-    //ios status bar 
-    paddingTop: StatusBar.currentHeight,
-    backgroundColor: colors.lavender
-  },
-
-  searchBarContainer: {
-    flex: 0.1,
-    justifyContent: 'center',
-    paddingHorizontal:sizes.md,
-    // paddingVertical:16,
-    // backgroundColor: colors.aquamarine
-  },
-
-  searchBar: {
-    // paddingHorizontal:50
-    // verticalAlign: 'center',
-    // paddingVertical:6
-  },
-
-  list: {
-    flex: 0.9,
-    paddingLeft: sizes.md,
-    paddingTop: sizes.md,
-    backgroundColor: colors.iris
-  }
-
-});
