@@ -8,25 +8,29 @@ import {
   View,
   Platform,
   TextInput } from 'react-native';
-
-import { RestaurantCard } from '../restaurant-card.js';
-import { sizes } from '../../../../infrastructure/theme/sizes.js';
-import { colors } from '../../../../infrastructure/theme/colors.js';
+import { RestaurantCard } from '../components/restaurant-card.js';
 import styled from 'styled-components';
+import { theme } from '../../../../src/infrastructure/theme/index.js'
+
+
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
   margin-top: ${StatusBar.currentHeight}px;
-  background-color: ${()=>colors.lavender};
+  background-color: ${(props)=> props.theme.colors.bg.primary};
 `;
 const SearchContainer = styled(View)`
-  flex: 0.1;
   justify-content: 'center';
-  padding-horizontal:${()=>sizes.md}px;
+  padding: ${(props)=> props.theme.space.lg};
 `;
+
+const FoodSearchBar = styled(Searchbar)`
+  background-color: ${(props)=> props.theme.colors.bg.secondary};
+`;
+
 const RestaurantListContainer = styled(View)`
-  flex: 0.9;
-  padding: ${()=>sizes.md}px;
+  flex: 1;
+  padding: ${(props)=> props.theme.space.lg};
 `;
 
 
@@ -35,7 +39,7 @@ export const RestaurantsScreen = () => (
   <SafeArea>
 
     <SearchContainer>
-      <Searchbar placeholder="What would you like to eat?"/>
+      <FoodSearchBar placeholder="What would you like to eat?"/>
     </SearchContainer>
 
     <RestaurantListContainer>
